@@ -29,5 +29,6 @@ Route::prefix('resource')->group(function () {
 
     Route::apiResource('users', Resource\UserController::class)->names('resource.users');
     Route::apiResource('teams', Resource\TeamController::class)->names('resource.teams');
+    Route::apiResource('roles', Resource\RoleController::class)->names('resource.roles');
 
 });
