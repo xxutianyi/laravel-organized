@@ -1,0 +1,51 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ namespacedRequests }}
+use App\Utils\Response;
+
+class {{ class }} extends Controller
+{
+
+    public function index({{ storeRequest }} $request)
+    {
+
+        $size = $request->input('pageSize');
+        $current = $request->input('current');
+
+        $data = [];
+
+        if ($size && $current) {
+            return new Response($request, $data->paginate($size, ['*'], 'current', $current));
+        } else {
+            return new Response($request, ['data' => $data->get()]);
+        }
+    }
+
+
+    public function store({{ storeRequest }} $request)
+    {
+        //
+    }
+
+
+    public function show({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        return new Response($request, ${{ modelVariable }});
+    }
+
+
+    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        return new Response($request, ${{ modelVariable }});
+    }
+
+
+    public function destroy({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    {
+        return new Response($request);
+    }
+}
